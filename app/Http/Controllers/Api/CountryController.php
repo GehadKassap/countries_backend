@@ -17,6 +17,11 @@ class CountryController extends Controller
         $countries = Country::paginate(10);
         return response()->json($countries);
       }
+      //to get countries data
+      public function allCountries(){
+        $countries = Country::get();
+        return response()->json($countries);
+      }
 
      //to  recieve country to filter
      public function getCountry(Request $request){
@@ -30,11 +35,26 @@ class CountryController extends Controller
      //to  recieve state to filter each valid and invalid number
      public function getStatus(Request $request){
         //Getting country keyword from Get request;
-        $recievedStatus = $request->query('phone_status');
-
+        $recievedStatus = $request->query('phone_status' , 'ok');
+        // dd($recievedStatus);
         //Search on matched Country on DB;
-        $countries = Country::where('phone_status',$recievedStatus)->paginate(10);
+        $countries = Country::where('phone_status', $recievedStatus)->paginate(10);
         return response()->json($countries);
+     }
+
+     public function handleStoreCountry(Request $request){
+        $country = $request->all();
+        $country = Country::create($country);
+        return $country ? response()->json([
+                'errors' => false,
+                'country'=>$country ,
+                'message' =>'country created successfully'
+             ]) :
+            response()->json([
+                'errors'=> true,
+                'country'=> false,
+                'message' =>[]
+            ]);
      }
     /**
      * Show the form for creating a new resource.
@@ -55,6 +75,7 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
     }
 
     /**

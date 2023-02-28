@@ -15,11 +15,18 @@ use App\Http\Controllers\Api\CountryController;
 */
 
 
-//Retrieve all Countries with pagination
+//Retrieve all Countries with  (table)
 Route::apiResource('countries' , CountryController::class);
+
+//Get all countries for dropdown
+Route::get('all_countries' , [CountryController::class , 'allCountries']);
 
 //Filter country by name
 Route::get('get_country' , [CountryController::class , 'getCountry']);
 
 //Filter country by status
 Route::get('get_countries_status' , [CountryController::class , 'getStatus']);
+
+
+//Recieve Data from Create Phone Number Form
+Route::post('/country/save', [CountryController::class, 'handleStoreCountry']);
