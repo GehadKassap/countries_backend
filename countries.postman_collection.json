@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "7faa6e1d-1f34-42df-afb5-0a1c2cc1a990",
+		"name": "amit task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16853475"
+	},
+	"item": [
+		{
+			"name": "get countries data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/countries",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filter get country by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/get_country?country=Algeria",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get_country"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Algeria"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "filter get countries by status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/get_countries_status?phone_status=ok",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"get_countries_status"
+					],
+					"query": [
+						{
+							"key": "phone_status",
+							"value": "ok"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/all_countries",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"all_countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add new phone number to country",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Access-Control-Allow-Origin",
+						"value": "*",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "country_name",
+							"value": "Egypt",
+							"type": "text"
+						},
+						{
+							"key": "country_code",
+							"value": "ddd",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "dd",
+							"type": "text"
+						},
+						{
+							"key": "phone_status",
+							"value": "d",
+							"type": "text"
+						},
+						{
+							"key": "country_flag",
+							"value": "d",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/country/save",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"country",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/country/delete?country_id=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"country",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "country_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update phone number of country",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "phone_number",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/country/update/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"country",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

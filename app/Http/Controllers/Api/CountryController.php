@@ -78,7 +78,6 @@ class CountryController extends Controller
     function updateCountry(Request $request,Country $country_id){
         $data = $request->all();
         $country_id->update($data);
-        // $country = Country::find($country_id);
         return $country_id? response()->json([
             'errors'=>   !$country_id,
              "status" => 201,
