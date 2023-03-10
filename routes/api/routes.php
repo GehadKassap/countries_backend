@@ -30,3 +30,7 @@ Route::get('get_countries_status' , [CountryController::class , 'getStatus']);
 
 //Recieve Data from Create Phone Number Form
 Route::post('/country/save', [CountryController::class, 'handleStoreCountry']);
+
+
+//To delete country from database
+Route::get("/country/delete", [CountryController::class, "deleteCountry"]);

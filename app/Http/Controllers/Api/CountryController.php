@@ -17,9 +17,9 @@ class CountryController extends Controller
         $countries = Country::paginate(10);
         return response()->json($countries);
       }
-      //to get countries data
+      //to get countries data to Display in Dropdown in front
       public function allCountries(){
-        $countries = Country::get();
+        $countries = Country::select('country_name','id')->get();
         return response()->json($countries);
       }
 
@@ -57,69 +57,22 @@ class CountryController extends Controller
             ]);
      }
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-        //to add new phone related to specific country
-        public function create(){
-
-        }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-        // dd($request);
+     * Delete Specific Item from Database
+    */
+    function deleteCountry(Request $request){
+        $country_id = $request->get("country_id");
+        $country = Country::find($country_id)->delete();
+        return $country? response()->json([
+            'errors'=> ! $country,
+             "status" => 204,
+            'message'=> "country deleted successfully"
+        ]) : response()->json([
+            'errors'=> ! $country,
+             "status" => 204,
+            'message'=> "something went wrong :("
+        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
