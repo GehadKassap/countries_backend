@@ -68,11 +68,25 @@ class CountryController extends Controller
             'message'=> "country deleted successfully"
         ]) : response()->json([
             'errors'=> ! $country,
-             "status" => 204,
             'message'=> "something went wrong :("
         ]);
     }
 
-
+    /**
+     * updateCountry is used to update phone number in DB
+    */
+    function updateCountry(Request $request,Country $country_id){
+        $data = $request->all();
+        $country_id->update($data);
+        // $country = Country::find($country_id);
+        return $country_id? response()->json([
+            'errors'=>   !$country_id,
+             "status" => 201,
+            'message'=> "phone updated successfully! :)"
+        ]) : response()->json([
+            'errors'=>   $country_id,
+            'message'=> "something went wrong :("
+        ]);
+    }
 
 }

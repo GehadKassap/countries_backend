@@ -34,3 +34,5 @@ Route::post('/country/save', [CountryController::class, 'handleStoreCountry']);
 
 //To delete country from database
 Route::get("/country/delete", [CountryController::class, "deleteCountry"]);
+//To Update country from database
+Route::post("/country/update/{country_id}", [CountryController::class, "updateCountry"]);
