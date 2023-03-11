@@ -19,8 +19,14 @@ class CountryController extends Controller
       }
       //to get countries data to Display in Dropdown in front
       public function allCountries(){
-        $countries = Country::select('country_name','id')->get();
-        return response()->json($countries);
+        $allCountries = [];
+        $countries = Country::all()->unique('country_name');
+        foreach($countries as $country){
+            // return $country ;
+            $obj = ["id" => $country->id , "country_name" =>$country->country_name];
+            array_push($allCountries , $obj);
+        }
+        return response()->json($allCountries);
       }
 
      //to  recieve country to filter
