@@ -20,9 +20,10 @@ class CountryController extends Controller
       //to get countries data to Display in Dropdown in front
       public function allCountries(){
         $allCountries = [];
-        $countries = Country::distinct()
-                            ->orderBy('country_name', 'asc')
-                            ->get(["country_name" , "id"]);
+        $countries = Country::select('id', 'country_name')
+                                    ->distinct('country_name')
+                                    ->orderBy('country_name', 'asc')
+                                    ->get();
         return response()->json($countries);
       }
 
