@@ -21,8 +21,7 @@ class CountryController extends Controller
       public function allCountries(){
         $allCountries = [];
         $countries = Country::select('id', 'country_name')
-                                    ->distinct('country_name')
-                                    ->orderBy('country_name', 'asc')
+                                    ->orderBy('id', 'desc')
                                     ->get();
         return response()->json($countries);
       }
