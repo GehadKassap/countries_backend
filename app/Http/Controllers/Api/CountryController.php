@@ -14,14 +14,15 @@ class CountryController extends Controller
      */
       //to get countries data with pagination
       public function index(){
-        $countries = Country::paginate(10);
+        $countries = Country::orderBy('id', 'desc')->paginate(10);
         return response()->json($countries);
       }
       //to get countries data to Display in Dropdown in front
       public function allCountries(){
         $allCountries = [];
         $countries = Country::select('id', 'country_name')
-                                    ->orderBy('id', 'desc')
+                                    ->distinct('country_name')
+                                    ->orderBy('country_name', 'asc')
                                     ->get();
         return response()->json($countries);
       }
